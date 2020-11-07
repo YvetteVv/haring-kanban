@@ -1,7 +1,7 @@
 import React from "react";
 import {withRouter} from 'react-router-dom';
 import classes from './index.module.css';
-import {Kanban} from "../component/kanban";
+import {Kanban2} from "../component/kanban-test";
 import {Header} from "../component/header";
 import {Nav} from "../component/nav";
 
@@ -39,7 +39,7 @@ class HomeReact extends React.Component {
 
                 <div>
                     <Header/>
-                    <Kanban/>
+                    <Kanban2/>
                 </div>
             );
         }
