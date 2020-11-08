@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'DavidLibre';
+    src: local('DavidLibre'), url(../fonts/DavidLibre-Regular.ttf) format('truetype');
+}
+
+p {
+    font-family: DavidLibre, serif;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
