@@ -20,58 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b450123-7005-436f-8744-230574f198f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/DavidLibre-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/styles/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/constant/constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/constant/tasks.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/home/component/Card/index.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/home/component/Card/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/home/component/Column/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/home/index.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/home/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/login/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/register/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/react-app-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/action.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/initial-state.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/serviceWorker.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/fetch.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/hiring.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/header/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/header/index.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/kanban-test/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/kanban-test/index.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/kanban/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/kanban/index.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/nav/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/nav/index.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/fetch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/home/index.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/home/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,8 +55,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604806410335</updated>
-      <workItem from="1604806411736" duration="533000" />
+      <workItem from="1604806411736" duration="3419000" />
     </task>
+    <task id="LOCAL-00001" summary="Nearly complete.">
+      <created>1604807039142</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604807039142</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,5 +84,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Nearly complete." />
     <option name="LAST_COMMIT_MESSAGE" value="Nearly complete." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2162" y="-32" width="596" height="536" key="find.popup" timestamp="1604809360961">
+      <screen x="1920" y="-704" width="1080" height="1880" />
+    </state>
+    <state x="2162" y="-32" width="596" height="536" key="find.popup/0.0.1920.1040/1920.-704.1080.1880@1920.-704.1080.1880" timestamp="1604809360961" />
   </component>
 </project>

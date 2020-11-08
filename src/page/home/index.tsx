@@ -9,7 +9,7 @@ import {get} from "../../utils/fetch";
 import {Column} from "./component/Column";
 
 
-export const Home = () => {
+export const Home = (props) => {
     const [didMount, setDidMount] = useState(false);
     const [items, setItems] = useState([]);
     useEffect(() => {
@@ -42,6 +42,7 @@ export const Home = () => {
             })
             setDidMount(true);
             setItems(items);
+            // TODO: debug usage
             console.log(items);
         });
         // TODO: UI error tips
@@ -71,46 +72,59 @@ export const Home = () => {
         return items
             .filter((item) => item.column === columnName)
             .map((item, index) => (
-                <Candidate key={item.id}
+                <Candidate
+                    key={item.id}
                     //
-                           id={item.id}
-                           status={item.status}
-                           name={item.name}
-                           education={item.education}
-                           contact={item.contact}
-                           attach={item.attach}
+                    id={item.id}
+                    status={item.status}
+                    name={item.name}
+                    education={item.education}
+                    contact={item.contact}
+                    attach={item.attach}
                     //
-                           currentColumnName={item.column}
-                           setItems={setItems}
-                           index={index}
-                           moveCardHandler={moveCardHandler}
+                    currentColumnName={item.column}
+                    setItems={setItems}
+                    index={index}
+                    moveCardHandler={moveCardHandler}
                 />
             ))
     }
     const {applied, phoneScreen, onSite, offered, accepted, rejected} = COLUMN_NAMES;
 
     return (
-        <div className="container">
-            <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
-                <Column title={applied} className={`${classes['column']} ${classes['applied-column']}`}>
-                    {returnItemsForColumn(applied)}
-                </Column>
-                <Column title={phoneScreen} className={`${classes['column']} ${classes['phone-screen-column']}`}>
-                    {returnItemsForColumn(phoneScreen)}
-                </Column>
-                <Column title={onSite} className={`${classes['column']} ${classes['on-site-column']}`}>
-                    {returnItemsForColumn(onSite)}
-                </Column>
-                <Column title={offered} className={`${classes['column']} ${classes['offered-column']}`}>
-                    {returnItemsForColumn(offered)}
-                </Column>
-                <Column title={accepted} className={`${classes['column']} ${classes['accepted-column']}`}>
-                    {returnItemsForColumn(accepted)}
-                </Column>
-                <Column title={rejected} className={`${classes['column']} ${classes['rejected-column']}`}>
-                    {returnItemsForColumn(rejected)}
-                </Column>
-            </DndProvider>
+        <div>
+            <div className="container">
+                <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
+                    <Column title={applied} className={`${classes['column']} ${classes['applied-column']}`}>
+                        {returnItemsForColumn(applied)}
+                    </Column>
+                    <Column title={phoneScreen} className={`${classes['column']} ${classes['phone-screen-column']}`}>
+                        {returnItemsForColumn(phoneScreen)}
+                    </Column>
+                    <Column title={onSite} className={`${classes['column']} ${classes['on-site-column']}`}>
+                        {returnItemsForColumn(onSite)}
+                    </Column>
+                    <Column title={offered} className={`${classes['column']} ${classes['offered-column']}`}>
+                        {returnItemsForColumn(offered)}
+                    </Column>
+                    <Column title={accepted} className={`${classes['column']} ${classes['accepted-column']}`}>
+                        {returnItemsForColumn(accepted)}
+                    </Column>
+                    <Column title={rejected} className={`${classes['column']} ${classes['rejected-column']}`}>
+                        {returnItemsForColumn(rejected)}
+                    </Column>
+                </DndProvider>
+            </div>
+            <div>
+                <button
+                    type="button"
+                    onClick={() => {
+                        props.history.push('/candidate/create');
+                    }}
+                >
+                    Create Candidate
+                </button>
+            </div>
         </div>
     );
 }

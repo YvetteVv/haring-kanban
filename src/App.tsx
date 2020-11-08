@@ -5,6 +5,7 @@ import {Login} from "./page/login";
 import {Home} from "./page/home";
 import {store} from "./redux/store";
 import {Register} from "./page/register";
+import {CandidateCreate} from "./page/candidate-create";
 
 export const App = () => {
     return (
@@ -25,6 +26,11 @@ export const App = () => {
                         path="/register"
                         exact
                         component={(routeProps) => <Register {...routeProps} />}
+                    />
+                    <Route
+                        path="/candidate/create"
+                        exact
+                        component={(routeProps) => <CandidateCreate {...routeProps} />}
                     />
                     <Redirect to="/home"/>
                 </Switch>
