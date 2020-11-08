@@ -42,8 +42,6 @@ export const Home = (props) => {
             })
             setDidMount(true);
             setItems(items);
-            // TODO: debug usage
-            console.log(items);
         });
         // TODO: UI error tips
     });
@@ -93,6 +91,16 @@ export const Home = (props) => {
 
     return (
         <div>
+            <div>
+                <button
+                    type="button"
+                    onClick={() => {
+                        props.history.push('/candidate/create');
+                    }}
+                >
+                    Create Candidate
+                </button>
+            </div>
             <div className="container">
                 <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
                     <Column title={applied} className={`${classes['column']} ${classes['applied-column']}`}>
@@ -114,16 +122,6 @@ export const Home = (props) => {
                         {returnItemsForColumn(rejected)}
                     </Column>
                 </DndProvider>
-            </div>
-            <div>
-                <button
-                    type="button"
-                    onClick={() => {
-                        props.history.push('/candidate/create');
-                    }}
-                >
-                    Create Candidate
-                </button>
             </div>
         </div>
     );

@@ -1,37 +1,38 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import {useDrag, useDrop} from "react-dnd";
-import {CloseOutlined, DownloadOutlined} from '@ant-design/icons';
+import {CloseOutlined} from '@ant-design/icons';
 import {COLUMN_NAMES} from "../../../../constant/constants";
 import classes from "./index.module.css";
-import {put} from "../../../../utils/fetch";
+import {del, put} from "../../../../utils/fetch";
 import {Button, Input} from 'antd';
 
-const {TextArea} = Input;
-
-
 const Candidate = (props) => {
-    const changeItemColumn = (currentItem, columnName, status) => {
+    const [id, setId] = useState(props.id);
+    const [status, setStatus] = useState(props.status);
+    const [name, setName] = useState(props.name);
+    const [education, setEducation] = useState(props.education);
+    const [contact, setContact] = useState(props.contact);
+    const [attach, setAttach] = useState(props.attach);
+    const changeItemColumn = (currentItem, columnName, statusIn) => {
         const request = {
-            id: props.id,
-            status: status,
-            name: props.name,
-            education: props.education,
-            contact: props.contact,
-            attach: props.attach,
-
+            id,
+            status: statusIn,
+            name,
+            education,
+            contact,
+            attach,
         };
-        put(`/candidate/${request.id}`, request)
-            .then(() => {
-                props.setItems((prevState) => {
-                    return prevState.map(e => {
-                        return {
-                            ...e,
-                            column: e.name === currentItem.name ? columnName : e.column,
-                            status: e.name === currentItem.name ? status : e.status
-                        }
-                    })
-                });
+        put(`/candidate/${request.id}`, request).then(() => {
+            props.setItems((prevState) => {
+                return prevState.map(function (e) {
+                    return {
+                        ...e,
+                        column: e.name === currentItem.name ? columnName : e.column,
+                        status: e.name === currentItem.name ? statusIn : e.status
+                    }
+                })
             });
+        });
         // TODO: error handling
     }
 
@@ -131,27 +132,88 @@ const Candidate = (props) => {
     return (
         <div ref={ref} className={classes['movable-item']} style={{opacity}}>
             <div>
-                <div className={classes.top}><Button size={'small'}>Edit</Button><CloseOutlined onClick={() => {
-                }}/></div>
-                <span>Name:</span><Input size="small" placeholder="" className={classes.input} value={props.name}
-                                         onChange={() => {
-                                         }}/>
-                <span>Education:</span><Input size="small" placeholder="" className={classes.input}
-                                              value={props.education} onChange={() => {
-            }}/>
-                <span>Email:</span><Input size="small" placeholder="" className={classes.input} value={props.contact}
-                                          onChange={() => {
-                                          }}/>
-                <div className={classes.flex}>
-                    <div>Attached File</div>
-                    <Button href={props.attach} type="primary" shape="circle" icon={<DownloadOutlined/>}
-                            size={'small'}/>
+                <div className={classes.top}>
+                    <Button
+                        size={'small'}
+                        onClick={() => {
+                            const request = {
+                                id,
+                                status,
+                                name,
+                                education,
+                                contact,
+                                attach,
+                            };
+                            put(`/candidate/${request.id}`, request);
+                            // TODO: error handling
+                        }}
+                    >
+                        Save
+                    </Button>
+                    <CloseOutlined
+                        onClick={() => {
+                            del(`/candidate/${id}`).then(() => {
+                                props.setItems((prevState) => {
+                                    const newItems = [];
+                                    prevState.map(function (e) {
+                                        if (e.id === id) {
+                                            console.log('hit');
+                                        } else {
+                                            newItems.push(e);
+                                        }
+                                    });
+                                    return newItems;
+                                });
+                            })
+                        }}
+                    />
                 </div>
-
+                <span>Name:</span>
+                <Input
+                    size="small"
+                    placeholder=""
+                    className={classes.input}
+                    value={name}
+                    onChange={(e) => {
+                        setName(e.target.value);
+                    }}
+                />
+                <span>Education:</span>
+                <Input
+                    size="small"
+                    placeholder=""
+                    className={classes.input}
+                    value={education}
+                    onChange={(e) => {
+                        setEducation(e.target.value);
+                    }}
+                />
+                <span>Email:</span>
+                <Input
+                    size="small"
+                    placeholder=""
+                    className={classes.input}
+                    value={contact}
+                    onChange={(e) => {
+                        setContact(e.target.value);
+                    }}
+                />
             </div>
-
         </div>
     )
 }
 
 export {Candidate};
+
+// TODO: file
+//
+// <div className={classes.flex}>
+//     <div>Attached File</div>
+//     <Button
+//         href={props.attach}
+//         type="primary"
+//         shape="circle"
+//         icon={<DownloadOutlined/>}
+//         size={'small'}
+//     />
+// </div>
