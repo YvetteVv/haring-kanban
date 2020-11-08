@@ -4,9 +4,9 @@ import {CloseOutlined, DownloadOutlined} from '@ant-design/icons';
 import {COLUMN_NAMES} from "../../../../constant/constants";
 import classes from "./index.module.css";
 import {put} from "../../../../utils/fetch";
-import { Input, Button, Modal } from 'antd';
-const { TextArea } = Input;
+import {Button, Input} from 'antd';
 
+const {TextArea} = Input;
 
 
 const Candidate = (props) => {
@@ -131,12 +131,21 @@ const Candidate = (props) => {
     return (
         <div ref={ref} className={classes['movable-item']} style={{opacity}}>
             <div>
-                <div className={classes.top}><Button size={'small'}>Edit</Button><CloseOutlined onClick={()=>{}}/></div>
-                <span>Name:</span><Input size="small" placeholder="" className={classes.input} value={props.name} onChange ={()=>{}}/>
-                <span>Education:</span><Input size="small" placeholder="" className={classes.input} value={props.education} onChange ={()=>{}}/>
-                <span>Email:</span><Input size="small" placeholder="" className={classes.input} value={props.contact} onChange ={()=>{}}/>
+                <div className={classes.top}><Button size={'small'}>Edit</Button><CloseOutlined onClick={() => {
+                }}/></div>
+                <span>Name:</span><Input size="small" placeholder="" className={classes.input} value={props.name}
+                                         onChange={() => {
+                                         }}/>
+                <span>Education:</span><Input size="small" placeholder="" className={classes.input}
+                                              value={props.education} onChange={() => {
+            }}/>
+                <span>Email:</span><Input size="small" placeholder="" className={classes.input} value={props.contact}
+                                          onChange={() => {
+                                          }}/>
                 <div className={classes.flex}>
-                    <div>Attached File</div><Button href={props.attach} type="primary" shape="circle" icon={<DownloadOutlined />} size={'small'} />
+                    <div>Attached File</div>
+                    <Button href={props.attach} type="primary" shape="circle" icon={<DownloadOutlined/>}
+                            size={'small'}/>
                 </div>
 
             </div>
