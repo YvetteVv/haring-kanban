@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { Layout, Menu, Breadcrumb, Button } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import {Breadcrumb, Button, Layout, Menu} from 'antd';
+import {PlusOutlined} from '@ant-design/icons';
 
 import {DndProvider} from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
@@ -91,20 +91,20 @@ export const Home = (props) => {
             ))
     }
     const {applied, phoneScreen, onSite, offered, accepted, rejected} = COLUMN_NAMES;
-    const { Header, Content, Footer } = Layout;
+    const {Header, Content, Footer} = Layout;
     return (
         <div>
             <Layout className="layout">
                 <Header>
-                    <div className="logo" />
+                    <div className="logo"/>
                     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
                         <Menu.Item key="1">Hiring Kanban</Menu.Item>
                         {/*<Menu.Item key="2">nav 2</Menu.Item>*/}
                         {/*<Menu.Item key="3">nav 3</Menu.Item>*/}
                     </Menu>
                 </Header>
-                <Content style={{ padding: '0 50px' }}>
-                    <Breadcrumb style={{ margin: '16px 0' }}>
+                <Content style={{padding: '0 50px'}}>
+                    <Breadcrumb style={{margin: '16px 0'}}>
                         <Breadcrumb.Item>Home</Breadcrumb.Item>
                         {/*<Breadcrumb.Item>List</Breadcrumb.Item>*/}
                         <Breadcrumb.Item>Candidate</Breadcrumb.Item>
@@ -113,7 +113,7 @@ export const Home = (props) => {
                         <div>
                             <Button
                                 shape="round"
-                                icon={<PlusOutlined />}
+                                icon={<PlusOutlined/>}
                                 size={'small'}
                                 onClick={() => {
                                     props.history.push('/candidate/create');
@@ -122,12 +122,12 @@ export const Home = (props) => {
                                 Create Candidate
                             </Button>
                             {/*<Button*/}
-                                {/*size={'small'}*/}
-                                {/*onClick={() => {*/}
-                                    {/*props.history.push('/candidate/create');*/}
-                                {/*}}*/}
+                            {/*size={'small'}*/}
+                            {/*onClick={() => {*/}
+                            {/*props.history.push('/candidate/create');*/}
+                            {/*}}*/}
                             {/*>*/}
-                                {/*Create Candidate*/}
+                            {/*Create Candidate*/}
                             {/*</Button>*/}
                         </div>
                         <div className="container">
@@ -135,7 +135,8 @@ export const Home = (props) => {
                                 <Column title={applied} className={`${classes['column']} ${classes['applied-column']}`}>
                                     {returnItemsForColumn(applied)}
                                 </Column>
-                                <Column title={phoneScreen} className={`${classes['column']} ${classes['phone-screen-column']}`}>
+                                <Column title={phoneScreen}
+                                        className={`${classes['column']} ${classes['phone-screen-column']}`}>
                                     {returnItemsForColumn(phoneScreen)}
                                 </Column>
                                 <Column title={onSite} className={`${classes['column']} ${classes['on-site-column']}`}>
@@ -144,10 +145,12 @@ export const Home = (props) => {
                                 <Column title={offered} className={`${classes['column']} ${classes['offered-column']}`}>
                                     {returnItemsForColumn(offered)}
                                 </Column>
-                                <Column title={accepted} className={`${classes['column']} ${classes['accepted-column']}`}>
+                                <Column title={accepted}
+                                        className={`${classes['column']} ${classes['accepted-column']}`}>
                                     {returnItemsForColumn(accepted)}
                                 </Column>
-                                <Column title={rejected} className={`${classes['column']} ${classes['rejected-column']}`}>
+                                <Column title={rejected}
+                                        className={`${classes['column']} ${classes['rejected-column']}`}>
                                     {returnItemsForColumn(rejected)}
                                 </Column>
                             </DndProvider>

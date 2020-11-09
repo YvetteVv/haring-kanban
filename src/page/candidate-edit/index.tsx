@@ -1,10 +1,11 @@
-import React, {useState, createElement} from 'react';
-import { Input, Layout, Menu, Breadcrumb, Button, Comment, Tooltip, Avatar, Rate} from 'antd';
-import { DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
+import React, {createElement, useState} from 'react';
+import {Avatar, Breadcrumb, Button, Comment, Input, Layout, Menu, Rate, Tooltip} from 'antd';
+import {DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined} from '@ant-design/icons';
 import {post} from "../../utils/fetch";
 import classes from "./index.module.css";
-const { TextArea } = Input;
-const { Header, Content, Footer } = Layout;
+
+const {TextArea} = Input;
+const {Header, Content, Footer} = Layout;
 export const CandidateReview = (props) => {
     const [name, setName] = useState('');
     const [education, setEducation] = useState('');
@@ -44,13 +45,13 @@ export const CandidateReview = (props) => {
         <div>
             <Layout className="layout">
                 <Header>
-                    <div className="logo" />
+                    <div className="logo"/>
                     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
                         <Menu.Item key="1">Hiring Kanban</Menu.Item>
                     </Menu>
                 </Header>
-                <Content style={{ padding: '0 50px' }}>
-                    <Breadcrumb style={{ margin: '16px 0' }}>
+                <Content style={{padding: '0 50px'}}>
+                    <Breadcrumb style={{margin: '16px 0'}}>
                         <Breadcrumb.Item>Kanban</Breadcrumb.Item>
                         <Breadcrumb.Item>Candidate</Breadcrumb.Item>
                         <Breadcrumb.Item>Information</Breadcrumb.Item>
@@ -62,30 +63,30 @@ export const CandidateReview = (props) => {
                         <div>
                             <p>Name</p>
                             <TextArea showCount maxLength={100}
-                                onChange={(e) => {
-                                    setName(e.target.value)
-                                }}
-                                value={name}
+                                      onChange={(e) => {
+                                          setName(e.target.value)
+                                      }}
+                                      value={name}
 
                             />
                         </div>
                         <div>
                             <p>Education</p>
                             <TextArea showCount maxLength={100}
-                                onChange={(e) => {
-                                    setEducation(e.target.value)
-                                }}
-                                value={education}
+                                      onChange={(e) => {
+                                          setEducation(e.target.value)
+                                      }}
+                                      value={education}
 
                             />
                         </div>
                         <div>
                             <p>Contact</p>
                             <TextArea showCount maxLength={100}
-                                onChange={(e) => {
-                                    setContact(e.target.value)
-                                }}
-                                value={contact}
+                                      onChange={(e) => {
+                                          setContact(e.target.value)
+                                      }}
+                                      value={contact}
 
                             />
                         </div>
@@ -115,7 +116,7 @@ export const CandidateReview = (props) => {
                         <div>
                             <h3>
                                 Average rate: //TODO
-                                <Rate disabled defaultValue={2} />
+                                <Rate disabled defaultValue={2}/>
                             </h3>
                         </div>
                         <div>
@@ -135,7 +136,7 @@ export const CandidateReview = (props) => {
                         <div>
                             <h2>Rate the candidate</h2>
                             <Rate
-                                style={{backgroundColor:'#1890ff'}}
+                                style={{backgroundColor: '#1890ff'}}
                             />
 
                         </div>
@@ -160,7 +161,7 @@ export const CandidateReview = (props) => {
                                 onClick={() => {
                                     props.history.push('/home');
                                 }}
-                                style={{marginLeft:'30px'}}
+                                style={{marginLeft: '30px'}}
                             >
                                 Cancel
                             </Button>

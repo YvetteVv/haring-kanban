@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import { Input, Layout, Menu, Breadcrumb, Button} from 'antd';
+import {Breadcrumb, Button, Input, Layout, Menu} from 'antd';
 import {post} from "../../utils/fetch";
 import classes from "./index.module.css";
-const { TextArea } = Input;
-const { Header, Content, Footer } = Layout;
+
+const {TextArea} = Input;
+const {Header, Content, Footer} = Layout;
 export const CandidateCreate = (props) => {
     const [name, setName] = useState('');
     const [education, setEducation] = useState('');
@@ -13,13 +14,13 @@ export const CandidateCreate = (props) => {
         <div>
             <Layout className="layout">
                 <Header>
-                    <div className="logo" />
+                    <div className="logo"/>
                     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
                         <Menu.Item key="1">Hiring Kanban</Menu.Item>
                     </Menu>
                 </Header>
-                <Content style={{ padding: '0 50px' }}>
-                    <Breadcrumb style={{ margin: '16px 0' }}>
+                <Content style={{padding: '0 50px'}}>
+                    <Breadcrumb style={{margin: '16px 0'}}>
                         <Breadcrumb.Item>Kanban</Breadcrumb.Item>
                         <Breadcrumb.Item>Candidate</Breadcrumb.Item>
                         <Breadcrumb.Item>Create</Breadcrumb.Item>
@@ -31,30 +32,30 @@ export const CandidateCreate = (props) => {
                         <div>
                             <p>Name</p>
                             <TextArea showCount maxLength={100}
-                                onChange={(e) => {
-                                    setName(e.target.value)
-                                }}
-                                value={name}
+                                      onChange={(e) => {
+                                          setName(e.target.value)
+                                      }}
+                                      value={name}
 
                             />
                         </div>
                         <div>
                             <p>Education</p>
                             <TextArea showCount maxLength={100}
-                                onChange={(e) => {
-                                    setEducation(e.target.value)
-                                }}
-                                value={education}
+                                      onChange={(e) => {
+                                          setEducation(e.target.value)
+                                      }}
+                                      value={education}
 
                             />
                         </div>
                         <div>
                             <p>Contact</p>
                             <TextArea showCount maxLength={100}
-                                onChange={(e) => {
-                                    setContact(e.target.value)
-                                }}
-                                value={contact}
+                                      onChange={(e) => {
+                                          setContact(e.target.value)
+                                      }}
+                                      value={contact}
 
                             />
                         </div>
