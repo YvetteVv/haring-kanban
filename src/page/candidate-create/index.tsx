@@ -9,7 +9,6 @@ export const CandidateCreate = (props) => {
     const [name, setName] = useState('');
     const [education, setEducation] = useState('');
     const [contact, setContact] = useState('');
-
     return (
         <div>
             <Layout className="layout">
@@ -31,32 +30,32 @@ export const CandidateCreate = (props) => {
                         </div>
                         <div>
                             <p>Name</p>
-                            <TextArea showCount maxLength={100}
-                                      onChange={(e) => {
-                                          setName(e.target.value)
-                                      }}
-                                      value={name}
-
+                            <TextArea
+                                showCount maxLength={100}
+                                onChange={(e) => {
+                                    setName(e.target.value)
+                                }}
+                                value={name}
                             />
                         </div>
                         <div>
                             <p>Education</p>
-                            <TextArea showCount maxLength={100}
-                                      onChange={(e) => {
-                                          setEducation(e.target.value)
-                                      }}
-                                      value={education}
-
+                            <TextArea
+                                showCount maxLength={100}
+                                onChange={(e) => {
+                                    setEducation(e.target.value)
+                                }}
+                                value={education}
                             />
                         </div>
                         <div>
                             <p>Contact</p>
-                            <TextArea showCount maxLength={100}
-                                      onChange={(e) => {
-                                          setContact(e.target.value)
-                                      }}
-                                      value={contact}
-
+                            <TextArea
+                                showCount maxLength={100}
+                                onChange={(e) => {
+                                    setContact(e.target.value)
+                                }}
+                                value={contact}
                             />
                         </div>
                         <div>
@@ -90,9 +89,6 @@ export const CandidateCreate = (props) => {
                     </div>
                 </Content>
             </Layout>
-
-
         </div>
-
     );
 }

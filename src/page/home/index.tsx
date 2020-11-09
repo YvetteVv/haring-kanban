@@ -116,7 +116,7 @@ export const Home = (props) => {
                                 icon={<PlusOutlined/>}
                                 size={'small'}
                                 onClick={() => {
-                                    props.history.push('/candidate/create');
+                                    props.history.push('/candidates');
                                 }}
                             >
                                 Create Candidate
@@ -124,7 +124,7 @@ export const Home = (props) => {
                             {/*<Button*/}
                             {/*size={'small'}*/}
                             {/*onClick={() => {*/}
-                            {/*props.history.push('/candidate/create');*/}
+                            {/*props.history.push('/candidates');*/}
                             {/*}}*/}
                             {/*>*/}
                             {/*Create Candidate*/}

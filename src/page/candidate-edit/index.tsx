@@ -1,18 +1,63 @@
-import React, {createElement, useState} from 'react';
+import React, {createElement, useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 import {Avatar, Breadcrumb, Button, Comment, Input, Layout, Menu, Rate, Tooltip} from 'antd';
 import {DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined} from '@ant-design/icons';
-import {post} from "../../utils/fetch";
+import {get, post, put} from "../../utils/fetch";
 import classes from "./index.module.css";
+
 
 const {TextArea} = Input;
 const {Header, Content, Footer} = Layout;
+
 export const CandidateReview = (props) => {
+    const {id} = useParams();
+    //
+    const [didMount, setDidMount] = useState(false);
     const [name, setName] = useState('');
     const [education, setEducation] = useState('');
     const [contact, setContact] = useState('');
+    const [status, setStatus] = useState(1);
+    const [commentList, setCommentList] = useState([]);
+    const [currentComment, setCurrentComment] = useState('');
+    const [averageRate, setAverageRate] = useState(-1);
+    const [userRate, setUserRate] = useState(0);
     const [likes, setLikes] = useState(0);
     const [dislikes, setDislikes] = useState(0);
     const [action, setAction] = useState(null);
+    //
+    useEffect(() => {
+        if (didMount) {
+            return;
+        }
+        if (isNaN(Number(id))) {
+            props.history.push('/home');
+            return;
+        }
+        get(`/candidate/${id}`).then((item) => {
+            // TODO: data validation to avoid exceptions
+            setDidMount(true);
+            setName(item.name);
+            setEducation(item.education);
+            setContact(item.contact);
+            setStatus(item.status);
+            return Promise.resolve();
+        }).then(() => {
+            return get(`/candidate/${id}/comment`).then((itemList) => {
+                // TODO: data validation to avoid exceptions
+                setCommentList(itemList);
+                return Promise.resolve();
+            })
+        }).then(() => {
+            return get(`/candidate/${id}/average-score`).then((data) => {
+                // TODO: data validation to avoid exceptions
+                setAverageRate(data.CountAverage);
+                return Promise.resolve();
+            })
+        }).catch(() => {
+            props.history.push('/home');
+        });
+    });
+
     const like = () => {
         setLikes(1);
         setDislikes(0);
@@ -38,7 +83,6 @@ export const CandidateReview = (props) => {
           <span className="comment-action">{dislikes}</span>
       </span>
         </Tooltip>,
-
     ];
 
     return (
@@ -62,89 +106,139 @@ export const CandidateReview = (props) => {
                         </div>
                         <div>
                             <p>Name</p>
-                            <TextArea showCount maxLength={100}
-                                      onChange={(e) => {
-                                          setName(e.target.value)
-                                      }}
-                                      value={name}
-
+                            <TextArea
+                                showCount maxLength={100}
+                                onChange={(e) => {
+                                    setName(e.target.value)
+                                }}
+                                value={name}
                             />
                         </div>
                         <div>
                             <p>Education</p>
-                            <TextArea showCount maxLength={100}
-                                      onChange={(e) => {
-                                          setEducation(e.target.value)
-                                      }}
-                                      value={education}
-
+                            <TextArea
+                                showCount maxLength={100}
+                                onChange={(e) => {
+                                    setEducation(e.target.value)
+                                }}
+                                value={education}
                             />
                         </div>
                         <div>
                             <p>Contact</p>
-                            <TextArea showCount maxLength={100}
-                                      onChange={(e) => {
-                                          setContact(e.target.value)
-                                      }}
-                                      value={contact}
-
+                            <TextArea
+                                showCount maxLength={100}
+                                onChange={(e) => {
+                                    setContact(e.target.value)
+                                }}
+                                value={contact}
                             />
                         </div>
                         <div>
-                            //TODO: map all the comments
-                            <Comment
-                                actions={actions}
-                                author={<a>Palo Redon</a>}
-                                avatar={
-                                    <Avatar
-                                        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                                        alt="Han Solo"
-                                    />
-                                }
-                                content={
-                                    <p>
-                                        //TODO comments
-                                    </p>
-                                }
-                                // datetime={
-                                //     <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                                //         <span>{moment().fromNow()}</span>
-                                //     </Tooltip>
-                                // }
-                            />
+                            {
+                                commentList.map((comment) => {
+                                    return (
+                                        <Comment
+                                            key={comment.id}
+                                            actions={actions}
+                                            author={<a>Palo Redon</a>}
+                                            avatar={
+                                                <Avatar
+                                                    src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                                    alt="Han Solo"
+                                                />
+                                            }
+                                            content={
+                                                <p>{comment.content}</p>
+                                            }
+                                            // datetime={
+                                            //     <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+                                            //         <span>{moment().fromNow()}</span>
+                                            //     </Tooltip>
+                                            // }
+                                        />
+                                    );
+                                })
+                            }
                         </div>
-                        <div>
-                            <h3>
-                                Average rate: //TODO
-                                <Rate disabled defaultValue={2}/>
-                            </h3>
-                        </div>
+                        {
+                            averageRate < 0 ? null : (
+                                <div>
+                                    <h3>
+                                        Average rate:
+                                    </h3>
+                                    <Rate disabled value={averageRate}/>
+                                </div>
+                            )
+                        }
                         <div>
                             <h2>Add comments</h2>
                             <div>
-                                <TextArea showCount maxLength={100}
-                                          onChange={(e) => {
-                                              //TODO
-                                          }}
-                                    // value={contact}
+                                <TextArea
+                                    showCount maxLength={100}
+                                    onChange={(e) => {
+                                        setCurrentComment(e.target.value)
+                                    }}
+                                    value={currentComment}
                                 />
                             </div>
-                            <Button type="primary">Add comment</Button>
-
+                            <Button
+                                type="primary"
+                                onClick={() => {
+                                    post(
+                                        `/candidate/${id}/comment`,
+                                        {
+                                            content: currentComment
+                                        }
+                                    ).then(() => {
+                                        // TODO: data validation to avoid exceptions
+                                        return get(`/candidate/${id}/comment`).then((itemList) => {
+                                            setCommentList(itemList);
+                                            setCurrentComment('');
+                                            return Promise.resolve();
+                                        })
+                                    });
+                                }}
+                            >
+                                Add comment
+                            </Button>
                         </div>
                         <br/>
                         <div>
                             <h2>Rate the candidate</h2>
                             <Rate
                                 style={{backgroundColor: '#1890ff'}}
+                                onChange={(value) => {
+                                    setUserRate(value);
+                                }}
+                                value={userRate}
                             />
-
+                            <Button
+                                onClick={() => {
+                                    post(
+                                        `/candidate/${id}/score`,
+                                        {
+                                            score: userRate
+                                        }
+                                    ).then(() => {
+                                        return get(`/candidate/${id}/average-score`).then((data) => {
+                                            // TODO: data validation to avoid exceptions
+                                            setAverageRate(data.CountAverage);
+                                            setUserRate(0);
+                                            return Promise.resolve();
+                                        });
+                                    });
+                                }}
+                                style={{marginLeft: '30px'}}
+                            >
+                                Submit
+                            </Button>
                         </div>
                         <div className={classes.flex}>
                             <Button
                                 onClick={() => {
-                                    post('/candidate', {
-                                        status: 1,
+                                    put(`/candidate/${id}`, {
+                                        status,
                                         name,
                                         education,
                                         contact,

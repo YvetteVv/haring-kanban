@@ -29,12 +29,12 @@ export const App = () => {
                         component={(routeProps) => <Register {...routeProps} />}
                     />
                     <Route
-                        path="/candidate/create"
+                        path="/candidates"
                         exact
                         component={(routeProps) => <CandidateCreate {...routeProps} />}
                     />
                     <Route
-                        path="/candidate/review" //TODO :id
+                        path="/candidate/:id"
                         exact
                         component={(routeProps) => <CandidateReview {...routeProps} />}
                     />

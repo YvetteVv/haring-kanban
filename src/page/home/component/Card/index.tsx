@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import {withRouter} from 'react-router-dom';
 import {useDrag, useDrop} from "react-dnd";
 import {CloseOutlined} from '@ant-design/icons';
 import {COLUMN_NAMES} from "../../../../constant/constants";
@@ -6,7 +7,7 @@ import classes from "./index.module.css";
 import {del, put} from "../../../../utils/fetch";
 import {Button, Input} from 'antd';
 
-const Candidate = (props) => {
+const CandidateReact = (props) => {
     const [id, setId] = useState(props.id);
     const [status, setStatus] = useState(props.status);
     const [name, setName] = useState(props.name);
@@ -133,19 +134,10 @@ const Candidate = (props) => {
                     <Button
                         size={'small'}
                         onClick={() => {
-                            const request = {
-                                id,
-                                status,
-                                name,
-                                education,
-                                contact,
-                                attach,
-                            };
-                            put(`/candidate/${request.id}`, request);
-                            // TODO: error handling
+                            props.history.push(`/candidate/${id.toString()}`);
                         }}
                     >
-                        Save
+                        Edit
                     </Button>
                     <CloseOutlined
                         onClick={() => {
@@ -200,7 +192,9 @@ const Candidate = (props) => {
     )
 }
 
-export {Candidate};
+export {CandidateReact};
+
+export const Candidate = withRouter(CandidateReact);
 
 // TODO: file
 //
