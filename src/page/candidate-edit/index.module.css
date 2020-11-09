@@ -1,0 +1,11 @@
+.flex{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 30px 0;
+}
+.rate{
+    /*background-color: white;*/
+    /*border-color: black;*/
+    /*color: bisque;*/
+}
