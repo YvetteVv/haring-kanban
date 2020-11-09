@@ -1,5 +1,5 @@
 const baseUrl = 'http://207.148.29.45:5000';
-
+//const baseUrl ='http://127.0.0.1:5000';
 const get = (path) => {
     return fetch(baseUrl + path).then((response) => {
         if (!response.ok) {

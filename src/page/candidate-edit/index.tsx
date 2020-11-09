@@ -134,6 +134,7 @@ export const CandidateReview = (props) => {
                                 value={contact}
                             />
                         </div>
+
                         <div>
                             {
                                 commentList.map((comment) => {
@@ -183,7 +184,7 @@ export const CandidateReview = (props) => {
                                 />
                             </div>
                             <Button
-                                type="primary"
+
                                 onClick={() => {
                                     post(
                                         `/candidate/${id}/comment`,
@@ -233,6 +234,7 @@ export const CandidateReview = (props) => {
                             >
                                 Submit
                             </Button>
+
                         </div>
                         <div className={classes.flex}>
                             <Button
@@ -263,6 +265,7 @@ export const CandidateReview = (props) => {
                     </div>
                 </Content>
             </Layout>
+            <br/>
 
 
         </div>
