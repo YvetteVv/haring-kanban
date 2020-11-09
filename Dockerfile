@@ -8,8 +8,6 @@ COPY ./package.json ./
 COPY ./tsconfig.json ./
 COPY ./yarn.lock ./
 
-# RUN yarn global add http-server && yarn install --production && yarn build
-RUN yarn install
+RUN yarn global add http-server && yarn install --production && yarn build
 
-# CMD [ "http-server", "./build/" ]
-CMD ["yarn", "start"]
+CMD [ "http-server", "./build/" ]
