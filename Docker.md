@@ -14,7 +14,7 @@ docker build -t hiring-kanban-frontend .
 #### Script
 
 ``` sh
-docker run -d --restart always --name hiring-kanban-frontend -v ./runtime/:/usr/src/app/runtime/ -p 8006:8006 hiring-kanban-frontend
+docker run -d --restart always --name hiring-kanban-frontend -p 8080:8080 hiring-kanban-frontend
 ```
 
 #### Compose
