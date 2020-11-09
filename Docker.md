@@ -4,7 +4,7 @@
 
 ``` sh
 git clean -xfd
-docker build -t hiring-kanban-frontend .
+docker build -t haring-kanban .
 ```
 
 ### Run
@@ -14,7 +14,7 @@ docker build -t hiring-kanban-frontend .
 #### Script
 
 ``` sh
-docker run -d --restart always --name hiring-kanban-frontend -p 8080:8080 hiring-kanban-frontend
+docker run -d --restart always --name haring-kanban -p 8080:8080 haring-kanban
 ```
 
 #### Compose
@@ -22,12 +22,12 @@ docker run -d --restart always --name hiring-kanban-frontend -p 8080:8080 hiring
 ``` yaml
 version: "3.3"
 services:
-  hiring-kanban-frontend:
+  haring-kanban:
     restart: always
-    container_name: hiring-kanban-frontend
+    container_name: haring-kanban
     ports:
       - "8080:8080"
-    image: hiring-kanban-frontend
+    image: haring-kanban
 ```
 
 ``` sh
